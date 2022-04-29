@@ -1,0 +1,19 @@
+{
+  "name": "luizalabs",
+  "version": "0.0.1",
+  "description": "Busca CEP",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alvaroico/luizalabs.git"
+  },
+  "author": "alvaroico",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alvaroico/luizalabs/issues"
+  },
+  "homepage": "https://github.com/alvaroico/luizalabs#readme"
+}

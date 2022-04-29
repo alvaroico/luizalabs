@@ -4,7 +4,10 @@
   "description": "Busca CEP",
   "main": "src/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "build": "tsc -b",
+    "start": "node ./build/index.js",
+    "criarTabelas":"ts-node-dev src/CreateTabelas.ts"
   },
   "repository": {
     "type": "git",

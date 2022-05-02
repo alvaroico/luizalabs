@@ -7,7 +7,7 @@ const Consulta = async (
   response: Response,
   next: NextFunction
 ) => {
-  const { CEP } = request.query
+  const { CEP } = request.query;
 
   if (!CEP) {
     response.status(400).send("CEP não informado.");
@@ -16,30 +16,41 @@ const Consulta = async (
 
   const CEPLength = CEP.toString().length;
 
-  if (CEPLength <= 5) {
-    response.status(400).send("CEP inválido menor que 5 dígitos.");
-    return;
-  } else if (CEPLength === 6) {
-    response.status(400).send("CEP inválido de 6 dígitos.");
-    return;
-  } else if (CEPLength === 7) {
-    response.status(400).send("CEP inválido de 7 dígitos.");
-    return;
-  } else if (CEPLength === 8) {
-    await QueryMYsql(`SELECT cep, logradouro, tipo_logradouro, complemento, 'local', id_cidade, id_bairro
-    FROM db_luizalabs.cepbr_endereco WHERE cep = '01255010'
-    `)
+  const consultaCEP = async (cep: string) => {
+    const query = `SELECT cep, logradouro, tipo_logradouro, complemento, 'local', id_cidade, id_bairro
+    FROM db_luizalabs.cepbr_endereco WHERE cep = '${cep}'`;
+    await QueryMYsql(query)
       .then((result) => {
         const MYsqlRetorno = result as cepbr_endereco[];
-        
-        response.status(200).send(MYsqlRetorno);
 
+        if (MYsqlRetorno.length === 0) {
+          response.status(400).send("CEP não encontrado.");
+        } else {
+          response.status(200).send(MYsqlRetorno);
+        }
       })
       .catch((error) => {
         response.status(400).json({
           message: `Erro na consulta SQL ${error}`,
         });
       });
+    return;
+  };
+
+  if (CEPLength <= 5) {
+    response.status(400).send("CEP inválido menor que 5 dígitos.");
+    return;
+  } else if (CEPLength === 6) {
+    const codigoCEP = `${CEP + "0" + "0"}`;
+    consultaCEP(codigoCEP);
+    return;
+  } else if (CEPLength === 7) {
+    const codigoCEP = `${CEP + "0"}`;
+    consultaCEP(codigoCEP);
+    return;
+  } else if (CEPLength === 8) {
+    const codigoCEP = `${CEP}`;
+    consultaCEP(codigoCEP);
     return;
   } else {
     response.status(400).send("CEP inválido.");

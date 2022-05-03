@@ -2,10 +2,10 @@ import mysql, { OkPacket } from "mysql";
 
 export const poolMYsql = mysql.createPool({
   connectionLimit: 10,
-  host: "localhost",
-  user: "alvaro",
-  password: "alvaro",
-  database: "db_luizalabs",
+  host: process.env.host,
+  user: process.env.user,
+  password: process.env.password,
+  database: process.env.database,
 });
 
 export { OkPacket };

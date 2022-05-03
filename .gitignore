@@ -1,6 +1,9 @@
 # MySQL
 mysql_data/
 
+# Build
+build/
+
 # Logs
 logs
 *.log

@@ -29,5 +29,6 @@ app.use("/CEP", JWTDecode("ChaveCEP"), CEP);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use("/log", express.static("./src/logs"));
+app.use("/index", express.static("./src/index"));
 
 module.exports = app;

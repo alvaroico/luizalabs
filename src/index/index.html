@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <title>Exemplo GET API CEP</title>
+</head>
+
+<body>
+
+  <input type="text" id="url" style="width:300px;" value="Digite o CEP">
+  <button onclick="consultarCEP();">Consultar CEP</button>
+  <hr />
+  <div id="resposta"></div>
+
+  <script>
+    function consultarCEP() {
+
+      const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcmlhY2FvIjoxNjUxNTI2MTI5MDAwLCJjbGllbnRlIjoiQ2hhdmVDRVAiLCJleHBpcmFjYW8iOjE2OTE2MjYxMjkwMDB9.0B-xAlVjPcEloNeSiUiRVtwF6fFn38mv5L8lj9QYW00";
+
+      const url = window.location.origin + '/CEP/Consulta?CEP=' + document.getElementById('url').value;
+
+      const xhttp = new XMLHttpRequest();
+      xhttp.open("GET", url, false);
+      xhttp.setRequestHeader("Authorization", "Bearer " + token);
+
+      xhttp.send();
+
+      document.getElementById("resposta").innerHTML = xhttp.responseText;
+    }
+  </script>
+</body>
+
+</html>

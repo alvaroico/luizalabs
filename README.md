@@ -10,6 +10,9 @@ Eu, como usuário, quero informar meu CEP e obter o nome da minha
 para preencher meus dados de cadastro de forma automática.
 Os critérios de aceite dessa história são:
 
+✅ Front 
+  # http://localhost:8822/index/
+
 ✅ Dado um CEP válido, deve retornar o endereço correspondente
 ✅ Dado um CEP válido, que não exista o endereço, deve substituir um dígito da direita para a esquerda por zero até que o endereço seja localizado (Exemplo: Dado 22333999 tentar com 22333990, 22333900 …)
 ✅ Dado um CEP inválido, deve retornar uma mensagem reportando o erro: "CEP inválido"O que se espera para as questões 1  - dicas e direcionamentos:

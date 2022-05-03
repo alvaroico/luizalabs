@@ -1,3 +1,4 @@
+require('dotenv').config()
 import supertest from "supertest";
 const appServer = require("./server");
 

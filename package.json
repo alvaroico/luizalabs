@@ -7,7 +7,9 @@
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "build": "tsc -b",
     "start": "node ./build/index.js",
-    "teste": "jest --forceExit"
+    "teste": "jest --forceExit",
+    "banco": "mkdir mysql_data && tar -xvf mysql_data.tar.gz --directory mysql_data",
+    "prod": "npm run banco && docker compose up -d"
   },
   "repository": {
     "type": "git",

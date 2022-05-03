@@ -28,7 +28,7 @@ app.use("/", homeRota);
 app.use("/CEP", JWTDecode("ChaveCEP"), CEP);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-app.use("/log", express.static("./src/logs"));
-app.use("/index", express.static("./src/index"));
+app.use("/log", express.static(path.join(__dirname, "./logs")));
+app.use("/index", express.static(path.join(__dirname, "./index")));
 
 module.exports = app;

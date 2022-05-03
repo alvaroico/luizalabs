@@ -19,22 +19,26 @@ const Consulta = async (
   const consultaCEP = async (cep: string) => {
     const query = `SELECT cep, logradouro, tipo_logradouro, complemento, 'local', id_cidade, id_bairro
     FROM db_luizalabs.cepbr_endereco WHERE cep = '${cep}'`;
-    await QueryMYsql(query)
-      .then((result) => {
-        const MYsqlRetorno = result as cepbr_endereco[];
+    return await QueryMYsql(query).then((result) => {
+      const MYsqlRetorno = result as cepbr_endereco[];
+      return MYsqlRetorno;
+    });
+  };
 
-        if (MYsqlRetorno.length === 0) {
-          response.status(400).send("CEP não encontrado.");
-        } else {
-          response.status(200).send(MYsqlRetorno);
-        }
-      })
-      .catch((error) => {
-        response.status(400).json({
-          message: `Erro na consulta SQL ${error}`,
-        });
-      });
-    return;
+  const consultaCEPRecursivo = async (cep: string) => {
+    let contador = 0;
+    do {
+      const dadosCEP = await consultaCEP(
+        cep.slice(0, 8 - contador).padEnd(8, "0")
+      );
+
+      if (dadosCEP.length > 0) {
+        return dadosCEP;
+      } else {
+        contador++;
+      }
+    } while (contador < 8);
+    response.status(400).send("CEP não localizado.");
   };
 
   if (CEPLength <= 5) {
@@ -42,15 +46,15 @@ const Consulta = async (
     return;
   } else if (CEPLength === 6) {
     const codigoCEP = `${CEP + "0" + "0"}`;
-    consultaCEP(codigoCEP);
+    response.status(200).send(await consultaCEPRecursivo(codigoCEP));
     return;
   } else if (CEPLength === 7) {
     const codigoCEP = `${CEP + "0"}`;
-    consultaCEP(codigoCEP);
+    response.status(200).send(await consultaCEPRecursivo(codigoCEP));
     return;
   } else if (CEPLength === 8) {
     const codigoCEP = `${CEP}`;
-    consultaCEP(codigoCEP);
+    response.status(200).send(await consultaCEPRecursivo(codigoCEP));
     return;
   } else {
     response.status(400).send("CEP inválido.");

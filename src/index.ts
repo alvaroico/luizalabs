@@ -25,6 +25,7 @@ morganBody(app, {
 app.use("/", homeRota);
 app.use("/CEP", JWTDecode('ChaveCEP'), CEP);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/log', express.static('./src/logs'));
 
 app.listen(8822, () => {
   console.log(`🙌😎 Servidor HTTP rodando porta: ${8822} 👌`);

@@ -30,6 +30,7 @@ Extras:
 🔑 JWT - eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcmlhY2FvIjoxNjUxNTI2MTI5MDAwLCJjbGllbnRlIjoiQ2hhdmVDRVAiLCJleHBpcmFjYW8iOjE2OTE2MjYxMjkwMDB9.0B-xAlVjPcEloNeSiUiRVtwF6fFn38mv5L8lj9QYW00
 ✅ Boas práticas de design de api;
 ✅ Swagger com a documentação;
+  # http://localhost:8822/api-docs/
 
 Tecnologias preferenciais: java ou node.js - justifique, no readme a escolha da tecnologia.
 
@@ -38,9 +39,14 @@ R - Fiz a escolha pelo Node.js pela leveza para colocar o microsserviço em prod
 Extras plus plus master (não é mandatório, apenas diferencial se vc tiver tempo e conhecimento):
 
 ✅ Logs estruturados;
-Endpoint para saúde da aplicação;
-Endpoint para métricas da aplicação;
-Considere a performance do algoritmo e o tempo de resposta da aplicação, sabendo que a API  pode receber flutuações de tráfego agressivas.
+✅ Endpoint para saúde da aplicação; 
+  # http://localhost:8822/log/express.log
+
+✅ Endpoint para métricas da aplicação; 
+  # http://localhost:8822/log/express.log
+
+✅ Considere a performance do algoritmo e o tempo de resposta da aplicação, sabendo que a API  pode receber flutuações de tráfego agressivas. 
+  # Pode ser verificado no Response: contido no express.log
 
 
 2 - Quando você digita a URL de um site (http://www.netshoes.com.br) no browser e pressiona enter, explique da forma que preferir, o que ocorre nesse processo do protocolo HTTP entre o Client e o Server.

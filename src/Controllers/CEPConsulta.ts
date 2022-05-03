@@ -17,8 +17,23 @@ const Consulta = async (
   const CEPLength = CEP.toString().length;
 
   const consultaCEP = async (cep: string) => {
-    const query = `SELECT cep, logradouro, tipo_logradouro, complemento, 'local', id_cidade, id_bairro
-    FROM db_luizalabs.cepbr_endereco WHERE cep = '${cep}'`;
+    const query = `SELECT
+    cep,
+    tipo_logradouro,
+    logradouro,
+    cb.bairro ,
+    cidade,
+    uf
+  FROM
+    db_luizalabs.cepbr_endereco ce
+  INNER JOIN cepbr_cidade cc 
+  ON
+    ce.id_cidade = cc.id_cidade
+  INNER JOIN cepbr_bairro cb 
+  ON
+    ce.id_bairro = cb.id_bairro
+  WHERE
+    ce.cep = '${cep}'`;
     return await QueryMYsql(query).then((result) => {
       const MYsqlRetorno = result as cepbr_endereco[];
       return MYsqlRetorno;

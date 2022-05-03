@@ -3,7 +3,11 @@ Desenvolvedor Full Stack Senior.
 
 1 - Expor um serviço de BUSCA DE CEP
 Eu, como usuário, quero informar meu CEP e obter o nome da minha
-RUA, BAIRRO, CIDADE e ESTADO para preencher meus dados de cadastro de forma automática.
+✅ RUA, 
+✅ BAIRRO, 
+✅ CIDADE e 
+✅ ESTADO 
+para preencher meus dados de cadastro de forma automática.
 Os critérios de aceite dessa história são:
 
 ✅ Dado um CEP válido, deve retornar o endereço correspondente

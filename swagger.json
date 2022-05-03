@@ -1,0 +1,114 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Teste LuizaLabs",
+    "version": "0.0.1",
+    "title": "Swagger LuizaLabs",
+    "contact": {
+      "email": "alvaro.r.p@hotmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "localhost:8822",
+  "basePath": "",
+  "tags": [],
+  "schemes": ["http"],
+  "paths": {
+    "/": {
+      "get": {
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Rota Home"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": ["write:pets", "read:pets"]
+          }
+        ]
+      }
+    },
+    "/CEP": {
+      "get": {
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Rota CEP"
+          },
+          "401": {
+            "description": "Não identificado Token"
+          }
+        }
+      }
+    },
+    "/CEP/Consulta": {
+      "get": {
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "CEP",
+            "in": "query",
+            "description": "Codigo CEP",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Retorno do Objeto CEP",
+            "content": ["application/json"],
+            "schema": {
+              "type": "object",
+              "properties": {
+                "cep": {
+                  "type": "string"
+                },
+                "tipo_logradouro": {
+                  "type": "string"
+                },
+                "logradouro": {
+                  "type": "string"
+                },
+                "bairro": {
+                  "type": "string"
+                },
+                "cidade": {
+                  "type": "string"
+                },
+                "uf": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "CEP não localizado."
+          },
+          "401": {
+            "description": "Não identificado Token"
+          }
+        }
+      }
+    }
+  }
+}

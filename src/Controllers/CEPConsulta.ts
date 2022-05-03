@@ -59,15 +59,7 @@ const Consulta = async (
   if (CEPLength <= 5) {
     response.status(400).send("CEP inválido menor que 5 dígitos.");
     return;
-  } else if (CEPLength === 6) {
-    const codigoCEP = `${CEP + "0" + "0"}`;
-    response.status(200).send(await consultaCEPRecursivo(codigoCEP));
-    return;
-  } else if (CEPLength === 7) {
-    const codigoCEP = `${CEP + "0"}`;
-    response.status(200).send(await consultaCEPRecursivo(codigoCEP));
-    return;
-  } else if (CEPLength === 8) {
+  } else if (CEPLength <= 8) {
     const codigoCEP = `${CEP}`;
     response.status(200).send(await consultaCEPRecursivo(codigoCEP));
     return;

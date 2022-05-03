@@ -25,10 +25,10 @@ Em caso de uso do Git/Bitbucket não esqueça de criar o .gitignore.
 
 Extras:
 
-Preferencialmente use um versionador e faça commits granulares;
-Api com autorização;
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcmlhY2FvIjoxNjUxNTI2MTI5MDAwLCJjbGllbnRlIjoiQ2hhdmVDRVAiLCJleHBpcmFjYW8iOjE2OTE2MjYxMjkwMDB9.0B-xAlVjPcEloNeSiUiRVtwF6fFn38mv5L8lj9QYW00
-Boas práticas de design de api;
+✅ Preferencialmente use um versionador e faça commits granulares;
+✅ Api com autorização;
+🔑 JWT - eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcmlhY2FvIjoxNjUxNTI2MTI5MDAwLCJjbGllbnRlIjoiQ2hhdmVDRVAiLCJleHBpcmFjYW8iOjE2OTE2MjYxMjkwMDB9.0B-xAlVjPcEloNeSiUiRVtwF6fFn38mv5L8lj9QYW00
+✅ Boas práticas de design de api;
 Swagger com a documentação;
 Tecnologias preferenciais: java ou node.js - justifique, no readme a escolha da tecnologia.
 

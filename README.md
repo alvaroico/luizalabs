@@ -1,6 +1,14 @@
 Desafio Técnico Luizalabs.
 Desenvolvedor Full Stack Senior.
 
+# Dependências
+Para iniciar o procedo é necessário o Docker e executar o comando
+
+```
+npm run prod
+```
+![Tux, the Linux mascot](/anexos/npmRunProd.gif)
+
 1 - Expor um serviço de BUSCA DE CEP
 Eu, como usuário, quero informar meu CEP e obter o nome da minha
 
